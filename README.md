@@ -5,3 +5,7 @@
 ### [Mars](https://github.com/personalfebus/Graphs/tree/master/Mars) : Bipartite graph;
 
 ### [MaxComponent](https://github.com/personalfebus/Graphs/tree/master/MaxComponent) : Max connected component of a graph;
+
+### [BridgeNum](https://github.com/personalfebus/Graphs/tree/master/BridgeNum) : Number of bridges between components of an undirected graph;
+
+### [EqDist](https://github.com/personalfebus/Graphs/tree/master/EqDist) : Finding vertecies equaly space from each other;
