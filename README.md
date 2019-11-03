@@ -9,3 +9,5 @@
 ### [BridgeNum](https://github.com/personalfebus/Graphs/tree/master/BridgeNum) : Number of bridges between components of an undirected graph;
 
 ### [EqDist](https://github.com/personalfebus/Graphs/tree/master/EqDist) : Finding vertecies equaly space from each other;
+
+### [Kruskal](https://github.com/personalfebus/Graphs/tree/master/Kruskal) : Finding minimum spanning tree (executing Kruskal's algorhytm);
