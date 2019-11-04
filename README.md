@@ -11,3 +11,5 @@
 ### [EqDist](https://github.com/personalfebus/Graphs/tree/master/EqDist) : Finding vertecies equaly space from each other;
 
 ### [Kruskal](https://github.com/personalfebus/Graphs/tree/master/Kruskal) : Finding minimum spanning tree (executing Kruskal's algorhytm);
+
+### [Prim](https://github.com/personalfebus/Graphs/tree/master/Prim) : Finding minimum spanning tree (executing Prim's algorhytm);

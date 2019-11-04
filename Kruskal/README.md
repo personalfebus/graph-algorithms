@@ -6,4 +6,4 @@
 
 Программа должна выводить в стандартный поток вывода минимальную суммарную длину дорожек с точностью до двух знаков после запятой.
 
-# [Output info](https://personalfebus.s-ul.eu/paeaLdaa)
+# [Output info](https://personalfebus.s-ul.eu/graphimg/paeaLdaa)

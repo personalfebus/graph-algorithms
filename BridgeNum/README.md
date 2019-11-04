@@ -6,4 +6,4 @@
 
 Программа должна хранить граф в памяти в виде списков инцидентности.
 
-# [Output info](https://personalfebus.s-ul.eu/Sv6a2X5y)
+# [Output info](https://personalfebus.s-ul.eu/graphimg/Sv6a2X5y)
