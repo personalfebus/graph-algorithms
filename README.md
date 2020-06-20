@@ -1,4 +1,4 @@
-# Graphs : Algorhytmes on undirected and orientated graphs
+# Graphs : Algorithms on undirected and orientated graphs
 
 ### [Dividers](https://github.com/personalfebus/Graphs/tree/master/Dividers) : Simple undirected graph;
 
@@ -10,7 +10,7 @@
 
 ### [EqDist](https://github.com/personalfebus/Graphs/tree/master/EqDist) : Finding vertecies equaly space from each other;
 
-### [Kruskal](https://github.com/personalfebus/Graphs/tree/master/Kruskal) : Finding minimum spanning tree (executing Kruskal's algorhytm);
+### [Kruskal](https://github.com/personalfebus/Graphs/tree/master/Kruskal) : Finding minimum spanning tree (executing Kruskal's algorithm);
 
 ### [Prim](https://github.com/personalfebus/Graphs/tree/master/Prim) : Finding minimum spanning tree (executing Prim's algorhytm);
 
