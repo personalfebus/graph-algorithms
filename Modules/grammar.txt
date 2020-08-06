@@ -1,0 +1,13 @@
+<program> ::= <function> <program> .
+<function> :: = <identif> ( <formal-args-list> ) := <expr>; .
+<formal-args-list> ::= <ident-list> | .
+<ident-list> ::= <identif> | <identif>, <ident-list> .
+<expr> ::= <comparition_expr> ? <comparition_expr> : <expr> | <comparition_expr> .
+<comparition_expr> ::= <arith_expr> <comparition_op> <arith_expr> | <arith_expr> .
+<comparition_op> ::= = | <> | < | > | <= | >= .
+
+<arith_expr> ::= <term> + <arith_expr> | <term> - <arith_expr> | <term> .
+<term> ::= <factor> * <term> | <factor> / <term> | <factor> .
+<factor> ::= <number> | <identif> | <identif> ( <actual_args_list> ) | ( <expr> ) | - <factor> .
+<actual_args_list> ::= <expr-list> | .
+<expr-list> ::= <expr> | <expr>, <expr-list> .
