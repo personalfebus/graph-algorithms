@@ -108,9 +108,9 @@ int main() {
     for (string line; getline(cin, line);){
         program.append(line);
     }
-    //cout << program << endl;
+   
     Graph *graph = new Graph();
-    //cout << "Kappa\n";
+   
     parse_program(program, graph);
     if (pr_error || !unconfiremed_func_call.empty()){
         cout << "error\n";
@@ -118,30 +118,12 @@ int main() {
         graph->tarjan();
         cout << count - 1;
     }
+
     delete graph;
-    /*cout << "\nkaramba\n";
-    for (auto el: func_to_num){
-        cout << "function " << el.first << " is vertex " << el.second << endl;
-    }
-
-    for (int i = 0; i < graph->smej.size(); i++){
-        cout << "Vertex " << i;
-        for (int j = 0; j < graph->smej[i].size(); j++){
-            cout << "\n----- Vertex" << graph->smej[i][j];
-        }
-        cout << endl;
-    }
-    graph->tarjan();
-
-    for (int i = 0; i < graph->vertecies.size(); i++) {
-        cout << "Vertex " << i << " is in component " << graph->vertecies[i].comp << endl;
-    }
-     */
     return 0;
 }
 
 int parse_program(string str, Graph *graph){
-    //cout << "parse_program called from " << current_position << '\n';
     for (; current_position < str.length();) {
         parse_function(str, graph);
         if (pr_error) {
@@ -152,7 +134,6 @@ int parse_program(string str, Graph *graph){
 }
 
 int parse_function(string str, Graph *graph){
-    //cout << "parse_function called from " << current_position << '\n';
     string function_name = parse_identif(str, graph);
     identif.insert(make_pair(function_name, vector<string>()));
     current_function = function_name;
@@ -160,10 +141,9 @@ int parse_function(string str, Graph *graph){
     if (elem == func_to_num.end()){
         func_to_num.insert(make_pair(function_name, func_count));
         graph->addVertex();
-        //cout << "xd ";
         func_count++;
     }
-//    cout << "CURRENT FUNCTION NAME = " << function_name << '\n';
+
     for (int i = current_position; i < str.length(); i++){
         if (str[i] == ' '){
             continue;
@@ -177,14 +157,12 @@ int parse_function(string str, Graph *graph){
             return -1;
         }
     }
-    //cout << "11111111111111\n";
+
     parse_formal_args_list(str, graph);
     auto un_func_and_var = unconfiremed_func_call.find(current_function);
     auto func_and_var = identif.find(current_function);
     if (un_func_and_var != unconfiremed_func_call.end()){
         if (un_func_and_var->second != func_and_var->second.size()){
-//            cout << "ERROR in func = " << current_function << "sizes: un = " << un_func_and_var->second
-//            << ", def = " << func_and_var->second.size() << '\n';
             pr_error = true;
             current_position = str.length() - 1;
             return -1;
@@ -198,11 +176,8 @@ int parse_function(string str, Graph *graph){
         }
         if (str[i] == ':') {
             if (str[i + 1] == '='){
-                //sdfsdfdsfds
-//                cout << current_position << " <-pos\n";
                 current_position = i + 2;
                 parse_expr(str, graph);
-//                cout << current_position << " <-pos1\n";
                 for (int j = current_position; j < str.length(); j++){
                     if (str[j] == ' ') continue;
                     if (str[j] == ';'){
@@ -225,18 +200,16 @@ int parse_function(string str, Graph *graph){
 }
 
 int parse_expr(string str, Graph *graph){
-//    cout << "parse_expr called from " << current_position << '\n';
     parse_comparition_expr(str, graph);
     for (int i = current_position; i < str.length(); i++){
         if (str[i] == ' ') continue;
         if (str[i] == '?'){
             current_position = i + 1;
             parse_comparition_expr(str, graph);
-//            cout << "--pos = " << current_position << " and charat = " << str[current_position] << '\n';
+
             for (int j = current_position; j < str.length(); j++){
                 if (str[j] == ' ') continue;
                 if (str[j] == ':'){
-//                    cout << "-----YEP POS = " << current_position << '\n';
                     current_position = j + 1;
                     parse_expr(str, graph);
                     return 0;
@@ -258,7 +231,6 @@ int parse_expr(string str, Graph *graph){
 }
 
 int parse_comparition_expr(string str, Graph *graph){
-//    cout << "parse_comparition_expr called from " << current_position << '\n';
     parse_arith_expr(str, graph);
     for (int i = current_position; i < str.length(); i++){
         if (str[i] == ' ') continue;
@@ -297,7 +269,6 @@ int parse_comparition_expr(string str, Graph *graph){
 }
 
 int parse_arith_expr(string str, Graph *graph){
-//    cout << "parse_arith_expr called from " << current_position << '\n';
     parse_term(str, graph);
     for (int i = current_position; i < str.length(); i++){
         if (str[i] == ' ') continue;
@@ -316,7 +287,6 @@ int parse_arith_expr(string str, Graph *graph){
 }
 
 int parse_term(string str, Graph *graph){
-//    cout << "parse_term called from " << current_position << '\n';
     parse_factor(str, graph);
     for (int i = current_position; i < str.length(); i++){
         if (str[i] == ' ') continue;
@@ -335,7 +305,7 @@ int parse_term(string str, Graph *graph){
 }
 
 int parse_factor(string str, Graph *graph){
-//    cout << "parse_factor called from " << current_position << '\n';
+
     for (int i = current_position; i < str.length(); i++){
         int ac_code = (int)str[i];
         if (str[i] == ' '){
@@ -345,7 +315,6 @@ int parse_factor(string str, Graph *graph){
             for (int j = i + 1; j < str.length(); j++){
                 if (!is_number((int)str[j])){
                     current_position = j;
-//                    cout << "number end on pos = " << j << '\n';
                     return 0;
                 }
             }
@@ -359,7 +328,6 @@ int parse_factor(string str, Graph *graph){
         } else if (str[i] == '('){
             current_position = i + 1;
             parse_expr(str, graph);
-            //обратить сюда внимание после завершения функ parse_expr
             for (int j = current_position; j < str.length(); j++){
                 if (str[j] == ' ') continue;
                 if (str[j] == ')'){
@@ -379,11 +347,9 @@ int parse_factor(string str, Graph *graph){
             for (int j = current_position; j < str.length(); j++){
                 if (str[j] == ' ') continue;
                 if (str[j] == '('){
-                    //cout << name << endl;
                     current_position = j + 1;
                     int args_num = parse_actual_args_list(str, name, graph);
                     if (args_num == -1){
-//                        cout << "NOOOOOOOOOOOOOOOOOOO\n";
                         pr_error = true;
                         current_position = str.length() - 1;
                         return -1;
@@ -399,10 +365,8 @@ int parse_factor(string str, Graph *graph){
                         }
                     } else {
                         if (func_and_var->second.size() == args_num){
-                            //return 0;
+
                         } else {
-//                            cout << "BAD CALL FOR " << name << " : " << func_and_var->second.size() << " != "
-//                            << args_num << endl;
                             pr_error = true;
                             current_position = str.length() - 1;
                             return -1;
@@ -411,11 +375,6 @@ int parse_factor(string str, Graph *graph){
                     auto el1 = func_to_num.find(name);
                     auto el2 = func_to_num.find(current_function);
                     bool need = true;
-                    //std::cout << '\n';
-//                    for (auto pew : func_to_num){
-//                        std::cout << "func = " << pew.first << "; num = " << pew.second << '\n';
-//                    }
-                    //cout << graph->smej.size() << " || " << el1->second << std::endl;
                     for (int kk : graph->smej[el2->second]){
                         if (kk == el1->second){
                             need = false;
@@ -425,7 +384,6 @@ int parse_factor(string str, Graph *graph){
                     if (need){
                         graph->addEdge(el2->second, el1->second);
                     }
-                    //proverka args ghjkljhgfhjkljhghjklkjhgjklkjhgjkljhghjkljhghjkljhghjkjhghjklkjhjk
                     return 0;
                 } else {
                     auto func_and_var = identif.find(current_function);
@@ -446,10 +404,9 @@ int parse_factor(string str, Graph *graph){
     current_position = str.length() - 1;
     return -1;
 }
-//в эксп cur_pos сделать на следующий элем
 
 int parse_actual_args_list(string str, string func_name, Graph *graph){
-//    cout << "parse_actual_args_list called from " << current_position << '\n';
+
     for (int i = current_position; i < str.length(); i++){
         if (str[i] == ' ') continue;
         if (str[i] == ')'){
@@ -458,7 +415,7 @@ int parse_actual_args_list(string str, string func_name, Graph *graph){
         } else {
             current_position = i;
             int args_num = parse_expr_list(str, func_name, 0, graph);
-            //cout << "critical = " << str[current_position] << '\n';
+
             for (int j = current_position; j < str.length(); j++){
                 if (str[j] == ' ') continue;
                 if (str[j] == ')'){
@@ -482,8 +439,6 @@ int parse_actual_args_list(string str, string func_name, Graph *graph){
 
 int parse_expr_list(string str, string func_name, int args_num, Graph *graph){
     args_num++;
-//    cout << "parse_expr_list called from " << current_position << '\n';
-    //proverit' sootvetstvie (done)
     parse_expr(str, graph);
     for (int i = current_position; i < str.length(); i++){
         if (str[i] == ' ') continue;
@@ -492,7 +447,6 @@ int parse_expr_list(string str, string func_name, int args_num, Graph *graph){
             args_num = parse_expr_list(str, func_name, args_num, graph);
             i = current_position - 1;
         } else {
-            //cout << "interesting = " << str[i] << '\n';
             current_position = i;
             return args_num;
         }
@@ -503,12 +457,10 @@ int parse_expr_list(string str, string func_name, int args_num, Graph *graph){
 }
 
 int parse_formal_args_list(string str, Graph *graph){
-    //cout << "parse_formal_args_list called from " << current_position << '\n';
     for (int i = current_position + 1; i < str.length(); i++){
         if (str[i] == ' '){
             continue;
         } else if (str[i] == ')'){
-            //ne zabit soglasovat' vozvraschaemuy poziciu
             current_position = i + 1;
             return 0;
         } else {
@@ -522,8 +474,6 @@ int parse_formal_args_list(string str, Graph *graph){
 }
 
 int parse_ident_list(string str, Graph *graph){
-    //cout << "parse_ident_list called from " << current_position << '\n';
-    //cout << "start of variable = " << current_position << "; charat = " << str[current_position] << "\n";
     string variable_name = parse_identif(str, graph);
     auto func_and_var = identif.find(current_function);
     func_and_var->second.push_back(variable_name);
@@ -551,16 +501,13 @@ int parse_ident_list(string str, Graph *graph){
         if (current_position >= str.length() - 1){
             break;
         }
-        //cout << "a ";
     }
 
-//    cout << "you should not be here:)\n";
     pr_error = true;
     return -1;
 }
 
 string parse_identif(string str, Graph *graph){
-//    cout << "parse_identif called from " << current_position << '\n';
     bool need_latin = true;
 
     for (int i = current_position; i < str.length(); i++) {
@@ -572,7 +519,6 @@ string parse_identif(string str, Graph *graph){
 
     for (int i = current_position; i < str.length(); i++){
         int ac_code = (int)str[i];
-//        cout << "char = " << str[i] << " ";
         if (need_latin){
             if (is_latin(ac_code)){
                 need_latin = false;
@@ -582,21 +528,6 @@ string parse_identif(string str, Graph *graph){
             }
         } else if (!is_latin(ac_code) && !is_number(ac_code)){
             string name = str.substr(current_position, i - current_position);
-//            cout << "current_position = " << current_position << "; i = " << i << '\n';
-//            cout << name << " next pos = " << i << "\n";
-//            cout << str.substr(8, 9) << '\n';
-
-//            auto elem = identif.find("reverse");
-//            if (elem == identif.end()){
-//                cout << "really bad\n";
-//            } else {
-//                elem->second.push_back("a");
-//                cout << elem->first << "rofl\n";
-//                auto elem1 = identif.find("reverse");
-//                for (int j = 0; j < elem1->second.size(); j++){
-//                    cout << elem->second[j] << "\n";
-//                }
-//            }
             current_position = i;
             return name;
         }
@@ -610,6 +541,5 @@ bool is_latin(int code){
 }
 
 bool is_number(int code){
-//    cout << "checking for number (" << code << " == '" << (char)code << "')" << '\n';
     return (code > 47) && (code < 58);
 }

@@ -18,4 +18,4 @@
 
 ### [MapRoute](./MapRoute) : Finding the shortest path on the map;
 
-### [Modeles](./Modules) : Parser and Tarjan algorithm;
+### [Modules](./Modules) : Parser and Tarjan algorithm;
