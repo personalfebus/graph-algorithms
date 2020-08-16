@@ -1,21 +1,21 @@
-# Graphs : Algorithms on undirected and orientated graphs
+# Graphs : Algorithms on undirected and directed graphs
 
-### [Dividers](./Dividers) : Simple undirected graph;
+### [Dividers](./Dividers) : Simple undirected graph;  
 
-### [Mars](./Mars) : Bipartite graph;
+### [Mars](./Mars) : Bipartite graph;  
 
-### [MaxComponent](./MaxComponent) : Max connected component of a graph;
+### [MaxComponent](./MaxComponent) : Max connected component of a graph;  
 
-### [BridgeNum](./BridgeNum) : Number of bridges between components of an undirected graph;
+### [BridgeNum](./BridgeNum) : Number of bridges between components of an undirected graph;  
 
-### [EqDist](./EqDist) : Finding vertecies equaly space from each other;
+### [EqDist](./EqDist) : Vertecies equaly distanced from each other;  
 
-### [Kruskal](./Kruskal) : Finding minimum spanning tree (executing Kruskal's algorithm);
+### [Kruskal](./Kruskal) : Kruskal's algorithm;  
 
-### [Prim](./Prim) : Finding minimum spanning tree (executing Prim's algorhytm);
+### [Prim](./Prim) : Prim's algorhytm;  
 
-### [GraphBase](./GraphBase) : Finding the base of the directed graph;
+### [GraphBase](./GraphBase) : Base of the directed graph;  
 
-### [MapRoute](./MapRoute) : Finding the shortest path on the map;
+### [MapRoute](./MapRoute) : Shortest path on the map;  
 
-### [Modules](./Modules) : Parser and Tarjan algorithm;
+### [Modules](./Modules) : Parser and Tarjan algorithm;  
