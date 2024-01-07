@@ -1,4 +1,4 @@
-# Graphs : Algorithms on undirected and directed graphs
+# Algorithms on undirected and directed graphs
 
 ### [Dividers](./Dividers) : Simple undirected graph;  
 
